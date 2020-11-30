@@ -3,15 +3,16 @@
   Welcome to Flavortown!
   <img src="assets/imgs/gamer.gif">
 </h1>
-<h1 id="message" style="text-align: center;">Please vote for your #1 Game of the Year</br>You will get a total of three votes, with them decreasing in value.</h1>
+<h1 id="message" style="text-align: center;">Please vote for your #1 Game of the Year</br>You will get a total of three
+  votes, with them decreasing in value.</h1>
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <ul id="gameList">
-        {{#each games}}
+  <ul id="gameList">
+    {{#each games}}
+    <div class="row">
+      <div class="col-sm">
         {{> games/game-block}}
-        {{/each}}
-      </ul>
+      </div>
     </div>
-  </div>
+    {{/each}}
+  </ul>
 </div>
