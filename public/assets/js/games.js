@@ -17,16 +17,18 @@ $(document).ready(function () {
   }
   if (userVotes == 0) {
     document.getElementById("message").innerHTML = "Thank you for voting!"
-    $("#gameList").empty()
+    $(".container").empty()
+    document.body.style.backgroundImage = "url('assets/imgs/flavortown.jpg')";
   }
   const now = new Date();
   const fullDaysSinceEpoch = Math.floor(now / 8.64e7);
   //18586 is right now, 11/20
   //18611 is 12/15
   //18628 is january 1st
-  if (fullDaysSinceEpoch > 18586) {
+  if (fullDaysSinceEpoch > 18611) {
     document.getElementById("message").innerHTML = "Thank you for voting!"
-    $("#gameList").empty()
+    $(".container").empty()
+    document.body.style.backgroundImage = "url('assets/imgs/flavortown.jpg')";
   }
   if (fullDaysSinceEpoch > 18628) {
     window.location.href = "/winners"

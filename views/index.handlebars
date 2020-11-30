@@ -1,7 +1,17 @@
-<h1 id="message" style="text-align: center;">Please vote for your #1 Game of the Year</h1>
-
-<ul id="gameList">
-  {{#each games}}
-      {{> games/game-block}}
-  {{/each}}
-</ul>
+<h1 style="text-align: center;">
+  <img src="assets/imgs/gamer.gif">
+  Welcome to Flavortown!
+  <img src="assets/imgs/gamer.gif">
+</h1>
+<h1 id="message" style="text-align: center;">Please vote for your #1 Game of the Year</br>You will get a total of three votes, with them decreasing in value.</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ul id="gameList">
+        {{#each games}}
+        {{> games/game-block}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
