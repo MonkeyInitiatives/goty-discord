@@ -4,6 +4,8 @@ var router = express.Router();
 var connection = require("../config/connection.js");
 var game = require("../models/game.js");
 var user = require("../models/user.js");
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var xhr = new XMLHttpRequest();
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -39,16 +41,31 @@ router.get("/winners", function (req, res) {
   var now = new Date();
   var fullDaysSinceEpoch = Math.floor(now / 8.64e7);
   if (fullDaysSinceEpoch > 18628) {
-    connection.query("SELECT * from games ORDER BY votes DESC", function (err, result) {
-      if (err) {
-        throw err;
+  connection.query("SELECT * from games ORDER BY votes DESC", function (err, result) {
+    if (err) {
+      throw err;
+    }
+    var hbsObject = {
+      games: result
+    };
+    
+    let request = xhr;
+    request.open("GET", "https://4ozc0qiiec.execute-api.us-east-1.amazonaws.com/prod/quote");
+    request.send();
+    let GOTYQuote = ""
+    request.onload = () => {
+      if (request.status === 200) {
+        GOTYQuote = JSON.parse(request.responseText).quote;
+        hbsObject.quote = GOTYQuote;
+        console.log(hbsObject);
+        res.render("results", hbsObject);
       }
-      var hbsObject = {
-        games: result
-      };
+      else {
+        console.log("error");
+      }
+    }
 
-      res.render("results", hbsObject);
-    });
+  });
   }
   else {
     return res.status(404).end();
