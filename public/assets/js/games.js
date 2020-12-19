@@ -30,7 +30,7 @@ $(document).ready(function () {
     $(".container").empty()
     document.body.style.backgroundImage = "url('assets/imgs/flavortown.jpg')";
   }
-  if (fullDaysSinceEpoch > 18615) {
+  if (fullDaysSinceEpoch > 18614) {
     window.location.href = "/winners"
   }
 });
