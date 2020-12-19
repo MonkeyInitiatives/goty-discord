@@ -41,7 +41,7 @@ router.get("/winners", function (req, res) {
   var now = new Date();
   var fullDaysSinceEpoch = Math.floor(now / 8.64e7);
   console.log(fullDaysSinceEpoch)
-  if (fullDaysSinceEpoch > 18614) {
+  if (fullDaysSinceEpoch > 18615) {
   connection.query("SELECT * from games ORDER BY votes DESC", function (err, result) {
     if (err) {
       throw err;
